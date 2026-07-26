@@ -1,0 +1,9 @@
+{
+  "deployment_config": {
+    "entry_point": {
+      "value": "app",
+      "type": "AdvancedIO"
+    },
+    "port": 9000
+  }
+}
