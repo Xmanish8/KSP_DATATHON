@@ -1,7 +1,6 @@
 const http = require('http');
 
-const API_HOST = process.env.API_HOST || '127.0.0.1';
-const API_PORT = process.env.API_PORT || 5000;
+const { API_HOST, API_PORT, connectionError } = require('../utils/config');
 
 module.exports = function(district, options) {
   const yearQuery = options.year ? `?year=${options.year}` : '';
@@ -15,6 +14,7 @@ module.exports = function(district, options) {
         const json = JSON.parse(raw);
         if (json.status !== 'ok') {
           console.error(`❌ Error: ${json.message}`);
+          process.exitCode = 1;
           return;
         }
         const data = json.data;
@@ -33,10 +33,10 @@ module.exports = function(district, options) {
         console.log('============================================================\n');
       } catch (err) {
         console.error('❌ Failed to parse API response:', err.message);
+        process.exitCode = 1;
       }
     });
   }).on('error', (e) => {
-    console.error(`❌ Could not connect to SurakshaAI API server at http://${API_HOST}:${API_PORT}`);
-    console.error('   Ensure Flask API is running (`python api/app.py`)');
+    connectionError(API_HOST, API_PORT);
   });
 };

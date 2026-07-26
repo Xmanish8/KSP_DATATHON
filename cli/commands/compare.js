@@ -1,7 +1,6 @@
 const http = require('http');
 
-const API_HOST = process.env.API_HOST || '127.0.0.1';
-const API_PORT = process.env.API_PORT || 5000;
+const { API_HOST, API_PORT, connectionError } = require('../utils/config');
 
 module.exports = function(districtA, districtB) {
   const url = `http://${API_HOST}:${API_PORT}/compare?districts=${encodeURIComponent(districtA)},${encodeURIComponent(districtB)}`;
@@ -14,6 +13,7 @@ module.exports = function(districtA, districtB) {
         const json = JSON.parse(raw);
         if (json.status !== 'ok') {
           console.error(`❌ Error: ${json.message}`);
+          process.exitCode = 1;
           return;
         }
         const comp = json.data.comparison;
@@ -28,9 +28,10 @@ module.exports = function(districtA, districtB) {
         console.log('\n============================================================\n');
       } catch (err) {
         console.error('❌ Failed to parse API response:', err.message);
+        process.exitCode = 1;
       }
     });
   }).on('error', (e) => {
-    console.error(`❌ Could not connect to SurakshaAI API server at http://${API_HOST}:${API_PORT}`);
+    connectionError(API_HOST, API_PORT);
   });
 };
