@@ -16,7 +16,7 @@ Transforming raw crime records into actionable intelligence using Machine Learni
 ![Folium](https://img.shields.io/badge/Folium-Maps-green)
 ![License](https://img.shields.io/badge/License-MIT-success)
 ![Status](https://img.shields.io/badge/Status-Active-success)
-
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-SurakshaAI-blue?style=for-the-badge)](https://project-rainfall-60080092828.development.catalystserverless.in/app/index.html)
 </div>
 
 ---
@@ -32,6 +32,19 @@ Transforming raw crime records into actionable intelligence using Machine Learni
 - **Network Analysis** - crime type co-occurrence graphs via Pyvis
 - **7-Page Interactive Dashboard** - built with Streamlit, dark-themed, production-ready
 - **REST API** - Flask backend with 10 endpoints for integration
+
+---
+
+## 🌐 Live Demo
+
+Experience **SurakshaAI** in action through our deployed prototype.
+
+| Resource | Link |
+|----------|------|
+| 🌐 Live Demo | https://project-rainfall-60080092828.development.catalystserverless.in/app/index.html |
+
+
+> **SurakshaAI** is an AI-powered Crime Intelligence & Predictive Analytics Platform designed for the Karnataka State Police. The platform provides interactive crime dashboards, hotspot detection, AI-based risk prediction, crime forecasting, anomaly detection, and criminal network analysis to support proactive policing.
 
 ---
 
